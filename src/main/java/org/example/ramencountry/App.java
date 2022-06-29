@@ -11,15 +11,20 @@ public class App
 {
     public static void main( String[] args )
     {
-        JobConf conf = new JobConf(App.class);
-        conf.setJobName("RevenueAggregation");
+        JobConf conf = new JobConf(org.example.ramenbrand.App.class);
+        conf.setJobName("Ramen Produced By Country");
+
+
+        conf.setMapperClass(RamenReviewedByCountryMapper.class);
+
+        conf.setMapOutputKeyClass(Text.class);
+        conf.setMapOutputValueClass(Text.class);
+
+        conf.setReducerClass(RamenReviewedByCountryReducer.class);
+
 
         conf.setOutputKeyClass(Text.class);
         conf.setOutputValueClass(IntWritable.class);
-
-        conf.setMapperClass(RevenueAggregationMapper.class);
-        conf.setCombinerClass(RevenueAggregationReducer.class);
-        conf.setReducerClass(RevenueAggregationReducer.class);
 
         conf.setInputFormat(TextInputFormat.class);
         conf.setOutputFormat(TextOutputFormat.class);
