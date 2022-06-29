@@ -15,17 +15,17 @@ public class RamenBrandVarietyReducer extends MapReduceBase implements Reducer<T
     @Override
     public void reduce(Text key, Iterator<Text> values, OutputCollector<Text, IntWritable> output, Reporter reporter)
             throws IOException {
-        int result = 0;
+        int count = 0;
         brandName = new Text(key.toString());
         for (Iterator<Text> it = values; it.hasNext(); ) {
             Text val = it.next();
             String strVal = val.toString();
             if(strVal.length() >= 1) {
-                result += 1;
+                count += 1;
             } else {
                 brandName = new Text(strVal);
             }
         }
-        output.collect(brandName, new IntWritable(result));
+        output.collect(brandName, new IntWritable(count));
     }
 }
