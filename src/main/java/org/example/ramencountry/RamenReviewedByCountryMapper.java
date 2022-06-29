@@ -19,10 +19,10 @@ public class RamenReviewedByCountryMapper extends MapReduceBase implements Mappe
 
         String[] split = line.split(";");
         String country = split[4];
-        String brand = split[0];
+        String review = split[0];
 
         this.countryText.set(country);
-        this.reviewText.set(brand);
+        this.reviewText.set(review);
         output.collect(this.countryText, this.reviewText);
     }
 }
