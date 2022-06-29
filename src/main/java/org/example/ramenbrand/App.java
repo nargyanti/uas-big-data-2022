@@ -4,6 +4,7 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.*;
+import org.example.ramenpacking.RamenPackingTypeMapper;
 
 import java.io.IOException;
 
@@ -12,14 +13,17 @@ public class App
     public static void main( String[] args )
     {
         JobConf conf = new JobConf(App.class);
-        conf.setJobName("RevenueAggregation");
+        conf.setJobName("Ramen Brand Variety");
+
+        conf.setMapperClass(RamenBrandVarietyMapper.class);
+
+        conf.setMapOutputKeyClass(Text.class);
+        conf.setMapOutputValueClass(Text.class);
+
+        conf.setReducerClass(RamenBrandVarietyReducer.class);
 
         conf.setOutputKeyClass(Text.class);
         conf.setOutputValueClass(IntWritable.class);
-
-        conf.setMapperClass(RevenueAggregationMapper.class);
-        conf.setCombinerClass(RevenueAggregationReducer.class);
-        conf.setReducerClass(RevenueAggregationReducer.class);
 
         conf.setInputFormat(TextInputFormat.class);
         conf.setOutputFormat(TextOutputFormat.class);
