@@ -12,14 +12,15 @@ public class App
     public static void main( String[] args )
     {
         JobConf conf = new JobConf(App.class);
-        conf.setJobName("RevenueAggregation");
+        conf.setJobName("Brand With Top Ten Predicate");
 
+        conf.setMapperClass(BrandTopTenMapper.class);
+        conf.setMapOutputKeyClass(Text.class);
+        conf.setMapOutputValueClass(Text.class);
+
+        conf.setReducerClass(BrandTopTenReducer.class);
         conf.setOutputKeyClass(Text.class);
         conf.setOutputValueClass(IntWritable.class);
-
-        conf.setMapperClass(RevenueAggregationMapper.class);
-        conf.setCombinerClass(RevenueAggregationReducer.class);
-        conf.setReducerClass(RevenueAggregationReducer.class);
 
         conf.setInputFormat(TextInputFormat.class);
         conf.setOutputFormat(TextOutputFormat.class);
