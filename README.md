@@ -9,7 +9,7 @@ As an instant ramen shop owner, I want to buy ramen stock, both local and import
 - The country that produces the most popular ramen brand by consumers
 - The most preferred form of packing by consumers
 
-#$ Data
+## Data
 Data obtained from Kaggle, namely Ramen Ratings
 https://www.kaggle.com/datasets/residentmario/ramen-ratings
 
