@@ -19,7 +19,6 @@ public class RamenPackingTypeMapper extends MapReduceBase implements org.apache.
 
         String[] split = line.split(";");
         String type = split[3];
-        System.out.println(type);
         int amount = 1;
 
         this.typeText.set(type);
